@@ -1,0 +1,18 @@
+.tablehead1 {
+    background-color: black;
+    color: white;
+    border-radius: 6;
+}
+
+.tableBox1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+}
+.innertable-heading{
+    border-right: '3px solid white'
+}
