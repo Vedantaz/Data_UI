@@ -4,12 +4,12 @@ import { Home, Settings, Person } from '@mui/icons-material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Stats from './components/organisms/Stats';
 import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/organisms/Sidebar';
 import Footer from './components/Footer';
 import EmployeeTable from './components/organisms/EmployeeTable';
 import EmployeeAllocationChart from './components/EmployeeAllocation';
 
-import {rows} from './components/organisms/EmployeeTable';
+import { rows } from './components/data/rows';
 const App = () => {
   return (
     <Router>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title, CategoryScale, ChartOptions } from 'chart.js';
-import { rows } from "./EmployeeTable";
+import { rows } from '../data/rows';
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Button } from '@mui/material';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import '../CSS files/Stats.css';

@@ -1,10 +1,9 @@
 
 import { IconButton, Typography, Toolbar, Box, AppBar, Menu, MenuItem, Avatar, Button } from '@mui/material';
-import Sidebar from './Sidebar';
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './CSS files/Navbar.css'
-
+import SidebarTemplate from '../components/Templates/Sidebar';
 
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -13,14 +12,12 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 export default function ButtonAppBar() {
 
-  // get date as per requirement
   const getFormattedDate = (): string => {
     const today = new Date();
     const day = today.getDate().toString().padStart(2, '0');
     const month = (today.getMonth() + 1).toString().padStart(2, '0');
     const year = today.getFullYear();
 
-    // Format and return the date in 'dd/mm/yyyy' format
     return `${day}/${month}/${year}`;
   };
 
@@ -37,14 +34,11 @@ export default function ButtonAppBar() {
   const handleDateChange = (date: Date | null) => {
     setStartDate(date);
   };
+
   const isStatsPage = location.pathname === '/Stats';
-
   const formattedDate = getFormattedDate();
-
-  // today btn in date-picker
-
   const handleSelectToday = () => {
-    setStartDate(new Date()); // Set the selected date to today
+    setStartDate(new Date()); 
   };
   return (
 
@@ -52,20 +46,21 @@ export default function ButtonAppBar() {
       <AppBar position="static">
         <Toolbar sx={{ justifyContent: 'space-between', backgroundColor: '1E3A8A' }}>
           <div className="left" style={{ flexDirection: 'row', display: 'flex', justifyContent: 'center', alignItems: 'center  ' }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               edge="start"
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-              <Sidebar anchor={'left'} items={[]} buttonLabel={' '} />
+            </IconButton> */}
+              {/* <SidebarTemplate anchor={'left'} items={[]} buttonLabel={' '} /> */}
 
-            </IconButton>
+              
+              <SidebarTemplate anchor={'left'}/>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
               Employee Work Dashboard
             </Typography>
-
           </div>
 
           <div className="right" style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-between', alignItems: 'center  ' }}

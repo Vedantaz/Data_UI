@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from 'chart.js';
 import { Box, SelectChangeEvent, Typography } from '@mui/material';
-import { rows } from './organisms/EmployeeTable';
+import { rows } from './data/rows';
 import Select from '../components/atoms/Select'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -27,21 +27,19 @@ const EmployeeAllocationChart = ({ rows: any }: { rows: Row[] }) => {
         }
     }, [rows]);
 
-    // Function to handle user selection from dropdown
     const handleUserChange = (event: SelectChangeEvent<string>) => {
         const userName = event.target.value as string;
         setSelectedUser(userName);
         setProjectData(userName);
     };
 
-    // Function to set the project allocation data based on selected user
     const setProjectData = (userName: string) => {
-        const user = rows.find((row) => row.name === userName);
+        const user = rows.find((row:any) => row.name === userName);
         if (user) {
-            const assignedProjects = user.projects.split(',').map((project) => project.trim());
+            const assignedProjects = user.projects.split(',').map((project:any) => project.trim());
             const projectPercentages: Record<string, number> = {};
 
-            assignedProjects.forEach((project) => {
+            assignedProjects.forEach((project:any) => {
                 if (!projectPercentages[project]) {
                     projectPercentages[project] = 0;
                 }
@@ -58,7 +56,6 @@ const EmployeeAllocationChart = ({ rows: any }: { rows: Row[] }) => {
         }
     };
 
-    // Pie Chart Data
     const pieChartData = {
         labels: userProjectData.map((item) => item.project),
         datasets: [
@@ -97,20 +94,7 @@ const EmployeeAllocationChart = ({ rows: any }: { rows: Row[] }) => {
     
     return (
         <Box className='resourceBox'>
-            <Select  value={selectedUser} onChange={handleUserChange} label="Select Employee" options={rows.map((row) => row.name)}/>
-
-            {/* <FormControl className='formControl' sx={{ width: 400 }}>
-                <InputLabel className='inputLabel' id="demo-simple-select-label" >Select Employee</InputLabel>
-                <Select value={selectedUser} onChange={handleUserChange} className='selectInput' labelId="demo-simple-select-label"
-    id="demo-simple-select" label="Select Employee">
-                    
-                    {rows.map((row) => (
-                        <MenuItem key={row.name} value={row.name}>
-                            {row.name}
-                        </MenuItem>
-                    ))}
-                </Select>
-            </FormControl> */}
+            <Select  value={selectedUser} onChange={handleUserChange} label="Select Employee" options={rows.map((row:any) => row.name)}/>
 
             <Box sx={{ marginTop: 3, width: 400, height: 400 }}>
                 {userProjectData.length > 0 ? (

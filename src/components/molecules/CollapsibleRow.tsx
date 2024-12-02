@@ -111,7 +111,7 @@ export const CollapsibleRow: React.FC<CollapsibleRowProps> = ({ row, projects, h
                               color: 'white',
                               fontWeight: 'bold',
                               fontSize: 12,
-                              textAlign: 'center',
+                              textAlign: 'center', 
                             }}
                           >
                             (1 Hr)

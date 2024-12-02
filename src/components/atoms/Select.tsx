@@ -1,7 +1,7 @@
 // src/components/atoms/Select.tsx
 import React, { useState, useEffect } from 'react';
 import { Select as MuiSelect, MenuItem, InputLabel, FormControl, SelectChangeEvent } from '@mui/material';
-import { rows } from '../organisms/EmployeeTable';
+import { rows } from '../data/rows';
 
 interface SelectProps {
     value: string;
@@ -17,7 +17,6 @@ const Select: React.FC<SelectProps> = ({ value, onChange, label, options }) => {
             <InputLabel className='inputLabel' id="demo-simple-select-label" >Select Employee</InputLabel>
             <MuiSelect value={value} onChange={onChange} label={label} className='selectInput' labelId="demo-simple-select-label"
                 id="demo-simple-select" >
-
                 {rows.map((row) => (
                     <MenuItem key={row.name} value={row.name}>
                         {row.name}
