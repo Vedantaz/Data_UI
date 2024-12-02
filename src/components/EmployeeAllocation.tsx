@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from 'chart.js';
 import { Select, MenuItem, FormControl, InputLabel, Box, SelectChangeEvent, Typography } from '@mui/material';
 import { rows } from './EmployeeTable';
 
@@ -23,8 +23,6 @@ const EmployeeAllocationChart = ({ rows: any }: { rows: Row[] }) => {
     useEffect(() => {
         if (rows.length > 0) {
             const defaultUser = rows[0].name;
-            setSelectedUser(defaultUser);
-            setProjectData(defaultUser);
         }
     }, [rows]);
 
@@ -65,22 +63,44 @@ const EmployeeAllocationChart = ({ rows: any }: { rows: Row[] }) => {
         datasets: [
             {
                 data: userProjectData.map((item) => parseFloat(item.percentage)),
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'], // Customize colors as needed
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
                 borderColor: '#fff',
                 borderWidth: 1,
             },
         ],
     };
 
+    const options: ChartOptions<'pie'> = {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function (tooltipItem) {
+                        const dataset = tooltipItem.dataset;
+                        const value = dataset.data[tooltipItem.dataIndex] as number;
+                        return `Project Allocation : ${value.toFixed(2)}%`;
+                    },
+                },
+            },
+            datalabels: {
+                color: 'white',
+                formatter: (value: number) => `${value.toFixed(2)}%`,
+                font: {
+                    size: 16,
+                    weight: 'bold',
+                },
+            },
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    };
+    
     return (
         <Box className='resourceBox'>
-            <FormControl className='formControl' sx={{ width: 400 }}>
-                <InputLabel className='inputLabel' sx={{position:'absolute', marginBottom:20, transition: 'all 0.2s ease',}} >Select Employee</InputLabel>
-                <Select value={selectedUser} onChange={handleUserChange} className='selectInput' displayEmpty>
-                    <MenuItem value="" disabled>
-                        Select Employee
-                    </MenuItem>
-                    {/* Map through the rows and create MenuItems for each employee */}
+            <FormControl className='formControl' sx={{ width: 400 }} >
+                <InputLabel className='inputLabel' id="demo-simple-select-label" >Select Employee</InputLabel>
+                <Select value={selectedUser} onChange={handleUserChange} className='selectInput' labelId="demo-simple-select-label"
+    id="demo-simple-select" label="Select Employee">
+                    
                     {rows.map((row) => (
                         <MenuItem key={row.name} value={row.name}>
                             {row.name}
@@ -88,14 +108,15 @@ const EmployeeAllocationChart = ({ rows: any }: { rows: Row[] }) => {
                     ))}
                 </Select>
             </FormControl>
-            {/* Render Pie chart */}
+
             <Box sx={{ marginTop: 3, width: 400, height: 400 }}>
                 {userProjectData.length > 0 ? (
-                    <Pie data={pieChartData} />
+                    <Pie data={pieChartData} options={options}/>
                 ) : (
                     <Typography variant="h6">No data available</Typography>
                 )}
             </Box>
+
         </Box>
     );
 };
