@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from 'chart.js';
-import { Select, MenuItem, FormControl, InputLabel, Box, SelectChangeEvent, Typography } from '@mui/material';
-import { rows } from './EmployeeTable';
+import { Box, SelectChangeEvent, Typography } from '@mui/material';
+import { rows } from './organisms/EmployeeTable';
+import Select from '../components/atoms/Select'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 interface Row {
@@ -96,7 +97,9 @@ const EmployeeAllocationChart = ({ rows: any }: { rows: Row[] }) => {
     
     return (
         <Box className='resourceBox'>
-            <FormControl className='formControl' sx={{ width: 400 }} >
+            <Select  value={selectedUser} onChange={handleUserChange} label="Select Employee" options={rows.map((row) => row.name)}/>
+
+            {/* <FormControl className='formControl' sx={{ width: 400 }}>
                 <InputLabel className='inputLabel' id="demo-simple-select-label" >Select Employee</InputLabel>
                 <Select value={selectedUser} onChange={handleUserChange} className='selectInput' labelId="demo-simple-select-label"
     id="demo-simple-select" label="Select Employee">
@@ -107,7 +110,7 @@ const EmployeeAllocationChart = ({ rows: any }: { rows: Row[] }) => {
                         </MenuItem>
                     ))}
                 </Select>
-            </FormControl>
+            </FormControl> */}
 
             <Box sx={{ marginTop: 3, width: 400, height: 400 }}>
                 {userProjectData.length > 0 ? (

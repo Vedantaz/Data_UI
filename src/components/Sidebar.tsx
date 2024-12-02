@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Typography, Box, SwipeableDrawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, Button, Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from '@mui/material';
 import { Inbox as InboxIcon, Mail as MailIcon, Assignment as AssignmentIcon, CheckCircle, AccessTime as AccessTimeIcon, Person as PersonIcon, Timer as TimerIcon } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
-import hoursData from './EmployeeTable';
+import hoursData from './organisms/EmployeeTable';
 type Anchor = 'left' | 'right' | 'top' | 'bottom';
 
 

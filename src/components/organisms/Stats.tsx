@@ -4,7 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title, CategoryScale, Ch
 import { rows } from "./EmployeeTable";
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Button } from '@mui/material';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import './CSS files/Stats.css';
+import '../CSS files/Stats.css';
 ChartJS.register(ArcElement, Tooltip, Legend, Title, CategoryScale, ChartDataLabels);
 
 const Stats: React.FC = () => {
