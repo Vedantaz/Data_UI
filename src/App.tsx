@@ -1,10 +1,10 @@
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Stats from './components/Templates/stats/Stats';
-import {Navbar} from './components/organisms/Navbar';
-import Footer from './components/Templates/footer/Footer';
-import EmployeeTable from './components/organisms/EmployeeTable';
-import EmployeeAllocation from './components/Templates/employee-allocation/EmployeeAllocation';
+import Stats from './components/Templates/appStats';
+import Navbar from './components/organisms/appNavBar';
+import Footer from './components/Templates/appFooter';
+import EmployeeTable from './components/organisms/employeeTable';
+import EmployeeAllocation from './components/Templates/employeeAllocation';
 
 const App = () => {
   return (
@@ -16,8 +16,7 @@ const App = () => {
 
 const AppContent = () => {
   const location = useLocation(); 
-  const isStatsPage = location.pathname === '/Stats'; // This now works inside Router context
-
+  const isStatsPage = location.pathname === '/Stats'; 
   return (
     <>
       <Navbar isStatsPage={isStatsPage} />

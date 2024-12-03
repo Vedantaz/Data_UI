@@ -1,0 +1,43 @@
+.statsBtn {
+    margin-right: 30px !important; 
+    background-color: black !important;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    padding: 8px 16px;
+    transition: background-color 0.3s ease;     
+}
+
+.statsBtn:hover {
+    background-color: #000000 !important;
+}
+.right{
+    width:auto;
+}
+.date{
+    width: 400px;
+  font-size: 18px; 
+  font-weight: bold; 
+  background-color: #1E3A8A; 
+  padding: 0.5rem 1rem; 
+  text-align: center;  
+  border-radius: 20px;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.date-picker-container {
+    width: 200px; 
+    margin: 20px 0;
+    display: flex;
+    justify-content: center; 
+  }
+  .react-datepicker__input-container input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
