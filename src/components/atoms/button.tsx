@@ -1,16 +1,29 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
-interface ButtonAtomProps {
+
+interface ButtonAtomProps extends ButtonProps{
   label: string;
-  variant: 'contained' | 'outlined';
-  color: 'primary' | 'secondary';
-  onClick: () => void;
+  to?: string;
+  variant?: 'contained' | 'outlined';
+  color?: 'primary' | 'secondary';
+  onClick?: () => void;
+  styles?: object;
 }
 
-const ButtonAtom: React.FC<ButtonAtomProps> = ({ label, variant, color, onClick }) => {
+const ButtonAtom: React.FC<ButtonAtomProps> = ({ label, 
+  to, 
+  onClick, 
+  styles, 
+  ...rest }) => {
+
+    const buttonComponent = to                                   // // Conditionally use NavLink for routing
+    ? { component: NavLink, to } 
+    : {};
+
   return (
-    <Button variant={variant} color={color} onClick={onClick}>
+    <Button {...rest}  {...buttonComponent} onClick={onClick} sx={styles}>
       {label}
     </Button>
   );

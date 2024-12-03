@@ -1,5 +1,6 @@
 import { Box, Typography, Container } from '@mui/material';
-import './CSS files/Footer.css';
+import '../footer/Footer.css';
+import TypographyAtom from '../../atoms/Typography';
 
 const Footer = () => {
   return (
@@ -13,8 +14,8 @@ const Footer = () => {
           return (
             <Box className='typeBox'
               key={index}>
-              <Typography variant="body1" sx={{ fontSize:16 }}>{label}:</Typography>
-              <Typography variant="h6" sx={{ color: '1E3A8A', fontWeight: 'bold', fontSize:16 }}>{value}</Typography>
+              <TypographyAtom variant="body1" styles={{ fontSize:16 }}>{label}:</TypographyAtom>
+              <TypographyAtom variant="h6" styles={{ color: '1E3A8A', fontWeight: 'bold', fontSize:16 }}>{value}</TypographyAtom>
             </Box>
           );
         }

@@ -1,12 +1,11 @@
 
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,Paper} from '@mui/material';
 
-import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
-import '../CSS files/EmployeeTable.css';
 import { CollapsibleRow } from '../molecules/CollapsibleRow';
-import { rows } from '../data/rows';
-import { projectRows } from '../data/projectRows';
-import {hoursData} from '../data/hoursData';
+import { rows } from '../../data/rows';
+import { projectRows } from '../../data/projectRows';
+import {hoursData} from '../../data/hoursData';
+import '../Templates/emplaoyee-table/EmployeeTable.css';
 
 const useStyles = () => ({
   tableHeading: {
